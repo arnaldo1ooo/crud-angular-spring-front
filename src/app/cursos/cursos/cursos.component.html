@@ -1,3 +1,6 @@
+
+<mat-card>
+
 <table mat-table [dataSource]="dsCursos" class="mat-elevation-z8">
 
   <!-- Columna nombre -->
@@ -16,4 +19,6 @@
   <tr mat-header-row *matHeaderRowDef="columnasAMostrar"></tr>
   <tr mat-row *matRowDef="let row; columns: columnasAMostrar;"></tr>
 </table>
+
+</mat-card>
 
