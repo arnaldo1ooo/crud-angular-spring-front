@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { CursosService } from './../services/cursos.service';
 import { Curso } from './../model/curso';
 import { Component, OnInit } from '@angular/core';
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CursosComponent implements OnInit {
 
-  dsCursos: Curso[] = [];
+  dsCursos: Observable<Curso[]>;
   columnasAMostrar = [ 'nombre', 'categoria' ];
 
   constructor(private cursosService: CursosService) {
