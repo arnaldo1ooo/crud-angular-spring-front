@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { first, Observable, tap } from 'rxjs';
+import { delay, first, Observable, tap } from 'rxjs';
 
 import { Curso } from '../model/curso';
 
@@ -16,8 +16,9 @@ export class CursosService {
   todosCursos() {
     return this.htppClient.get<Curso[]>(this.API)
     .pipe(                                        //Manipular datos
-      first(),                                    //Primer resultado
-      tap(cursos => console.log(cursos))          //Imprimir los resultados
+      first(),                                    //Ejecuta la accion al primer resultado
+      delay(5000),                                //Espera de 5 segundos
+      tap(cursos => console.log(cursos))          //Tap ejecuta la accion para todos, Imprimir los resultados
     );
   }
 }

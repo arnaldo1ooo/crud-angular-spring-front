@@ -10,11 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CursosComponent implements OnInit {
 
-  dsCursos: Observable<Curso[]>;
+  dsCursos$: Observable<Curso[]>; //Cuando es Observable, colocar $
   columnasAMostrar = [ 'nombre', 'categoria' ];
 
   constructor(private cursosService: CursosService) {
-    this.dsCursos = this.cursosService.todosCursos();
+    this.dsCursos$ = this.cursosService.todosCursos();
   }
 
   ngOnInit(): void {
