@@ -14,7 +14,7 @@ import { CursosService } from './../services/cursos.service';
 export class CursosComponent implements OnInit {
 
   dsCursos$: Observable<Curso[]>; //Cuando es Observable, colocar $
-  columnasAMostrar = ['nombre', 'categoria'];
+  columnasAMostrar = ['_id','nombre', 'categoria'];
 
   constructor(
       private cursosService: CursosService,
