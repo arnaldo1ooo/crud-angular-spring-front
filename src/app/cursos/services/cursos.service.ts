@@ -9,7 +9,7 @@ import { Curso } from '../model/curso';
 })
 export class CursosService {
 
-  private readonly API = '/assets/cursos.json';
+  private readonly API = 'api/cursos';
 
   constructor(private htppClient: HttpClient) { } //El httpClient permite la conexion con el backend
 
@@ -17,7 +17,7 @@ export class CursosService {
     return this.htppClient.get<Curso[]>(this.API)
     .pipe(                                        //Manipular datos
       first(),                                    //Ejecuta la accion al primer resultado
-      delay(5000),                                //Espera de 5 segundos
+      delay(1000),                                //Espera de 5 segundos
       tap(cursos => console.log(cursos))          //Tap ejecuta la accion para todos, Imprimir los resultados
     );
   }
