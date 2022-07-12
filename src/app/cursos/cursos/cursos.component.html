@@ -28,26 +28,6 @@
 
       </ng-container>
 
-      <!-- Columna Acciones -->
-      <ng-container matColumnDef="acciones">
-        <mat-header-cell *matHeaderCellDef>
-          <button mat-mini-fab color="accent" aria-label="Crear nuevo curso">
-            <mat-icon (click)="onNuevo()">add</mat-icon>
-          </button>
-        </mat-header-cell>
-
-        <mat-cell *matCellDef="let cursos">
-          <button mat-icon-button color="primary" aria-label="Editar curso">
-            <mat-icon>edit</mat-icon>
-          </button>
-
-          <button mat-icon-button color="warn" aria-label="Eliminar curso">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-cell>
-
-      </ng-container>
-
 
       <tr mat-header-row *matHeaderRowDef="columnasAMostrar"></tr>
       <tr mat-row *matRowDef="let row; columns: columnasAMostrar;"></tr>
