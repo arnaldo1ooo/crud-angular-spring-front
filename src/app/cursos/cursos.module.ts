@@ -6,6 +6,7 @@ import { MaterialModulosModule } from './../compartido/material-modulos/material
 import { CursosRoutingModule } from './cursos-routing.module';
 import { CursosComponent } from './cursos/cursos.component';
 import { CursoFormComponent } from './curso-form/curso-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CursoFormComponent } from './curso-form/curso-form.component';
     CommonModule,
     CursosRoutingModule,
     MaterialModulosModule,
-    CompartidoModule
+    CompartidoModule,
+    ReactiveFormsModule
   ]
 })
 export class CursosModule { }
