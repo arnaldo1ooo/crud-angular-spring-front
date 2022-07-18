@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,7 +16,8 @@ export class CursoFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private cursoService: CursosService,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    private location: Location) {
     this.formCurso = this.formBuilder.group({
       nombre: [null],
       categoria: [null]
@@ -24,14 +26,19 @@ export class CursoFormComponent implements OnInit {
 
   onGuardar() {
     this.cursoService.guardar(this.formCurso.value)
-      .subscribe(resultado => console.log(resultado), error => this.onError());
+      .subscribe(resultado => this.onExito(), error => this.onError());
   }
 
   onCancelar() {
-
+    this.location.back(); //Para que retroceda de pagina
   }
 
-  private onError(){
+  private onExito() {
+    this.snackBar.open('Curso guardado con exito!', '', { duration: 4000 });  //Mensaje cuando da error
+    this.onCancelar(); //Para que vuelva atras
+  }
+
+  private onError() {
     this.snackBar.open('Error al guardar curso', '', { duration: 4000 });  //Mensaje cuando da error
   }
 
