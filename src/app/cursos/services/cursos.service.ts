@@ -21,4 +21,8 @@ export class CursosService {
       tap(cursos => console.log(cursos))          //Tap ejecuta la accion para todos, Imprimir los resultados
     );
   }
+
+  guardar(curso: Curso){
+    return this.htppClient.post<Curso>(this.API, curso).pipe(first());
+  }
 }
