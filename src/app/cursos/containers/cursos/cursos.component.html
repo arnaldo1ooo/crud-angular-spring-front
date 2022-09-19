@@ -6,7 +6,10 @@
   <div class="column flex mat-elevation-z8">
 
     <!--Pasamos los cursos a la lista-->
-    <app-cursos-lista *ngIf="dsCursos$ | async as cursos; else cargando" [listCursos]="cursos">
+    <app-cursos-lista
+    *ngIf="dsCursos$ | async as cursos; else cargando"
+    [listCursos]="cursos"
+    (nuevo)="onNuevo()">  <!--Ejecuta este metodo-->
     </app-cursos-lista>
 
     <ng-template #cargando>

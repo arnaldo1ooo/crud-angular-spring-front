@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Curso } from '../model/curso';
+import { Curso } from '../../model/curso';
 
 @Component({
   selector: 'app-cursos-lista',
@@ -10,6 +10,7 @@ import { Curso } from '../model/curso';
 export class CursosListaComponent implements OnInit {
 
   @Input() listCursos: Curso[] = [];
+  @Output() nuevo = new EventEmitter(false);
   readonly columnasAMostrar = ['_id','nombre', 'categoria', 'acciones'];
 
   constructor(
@@ -20,7 +21,7 @@ export class CursosListaComponent implements OnInit {
   }
 
   onNuevo(){
-    this.ruta.navigate(['nuevo'], {relativeTo: this.rutaActual}); //Para que navegue a esa direccion
+    this.nuevo.emit(true);
   }
 
 }

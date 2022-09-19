@@ -17,7 +17,7 @@ export class CursosService {
     return this.htppClient.get<Curso[]>(this.API)
     .pipe(                                        //Manipular datos
       first(),                                    //Ejecuta la accion al primer resultado
-      delay(1000),                                //Espera de 5 segundos
+      delay(500),                                //Espera de x segundos
       tap(cursos => console.log(cursos))          //Tap ejecuta la accion para todos, Imprimir los resultados
     );
   }

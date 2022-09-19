@@ -1,10 +1,10 @@
-import { DialogoErrorComponent } from './../../compartido/componentes/dialogo-error/dialogo-error.component';
+import { DialogoErrorComponent } from '../../../compartido/componentes/dialogo-error/dialogo-error.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { catchError, Observable, of } from 'rxjs';
 
-import { Curso } from './../model/curso';
-import { CursosService } from './../services/cursos.service';
+import { Curso } from '../../model/curso';
+import { CursosService } from '../../services/cursos.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
