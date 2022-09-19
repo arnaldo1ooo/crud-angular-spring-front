@@ -22,7 +22,7 @@ export class CursosService {
     );
   }
 
-  guardar(curso: Curso){
+  guardar(curso: Partial<Curso>){ //Se usa Partial cuando se espera que no reciba todos los datos de Curso
     return this.htppClient.post<Curso>(this.API, curso).pipe(first());
   }
 }

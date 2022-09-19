@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CursosService } from '../services/cursos.service';
@@ -12,16 +12,16 @@ import { CursosService } from '../services/cursos.service';
 })
 export class CursoFormComponent implements OnInit {
 
-  formCurso: UntypedFormGroup;
+  formCurso = this.formBuilder.group({
+    nombre: [''],
+    categoria: ['']
+    });
 
-  constructor(private formBuilder: UntypedFormBuilder,
+  constructor(private formBuilder: NonNullableFormBuilder,
     private cursoService: CursosService,
     private snackBar: MatSnackBar,
     private location: Location) {
-    this.formCurso = this.formBuilder.group({
-      nombre: [null],
-      categoria: [null]
-    });
+
   }
 
   onGuardar() {
@@ -43,6 +43,7 @@ export class CursoFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 }
