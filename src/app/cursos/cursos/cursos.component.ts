@@ -15,7 +15,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CursosComponent implements OnInit {
 
   dsCursos$: Observable<Curso[]>; //Cuando es Observable, colocar $
-  columnasAMostrar = ['_id','nombre', 'categoria', 'acciones'];
 
   constructor(
       private cursosService: CursosService,
