@@ -34,7 +34,7 @@ export class CursoFormComponent implements OnInit {
   }
 
   private onExito() {
-    this.snackBar.open('Curso guardado con exito!', '', { duration: 4000 });  //Mensaje cuando da error
+    this.snackBar.open('Curso guardado con exito!', '', { duration: 4000 });  //Mensaje cuando salva correctamente
     this.onCancelar(); //Para que vuelva atras
   }
 
