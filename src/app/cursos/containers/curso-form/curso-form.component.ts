@@ -1,9 +1,11 @@
+import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CursosService } from '../../services/cursos.service';
+import { Curso } from '../../model/curso';
 
 @Component({
   selector: 'app-curso-form',
@@ -13,15 +15,29 @@ import { CursosService } from '../../services/cursos.service';
 export class CursoFormComponent implements OnInit {
 
   formCurso = this.formBuilder.group({
+    _id: [''],
     nombre: [''],
     categoria: ['']
     });
 
-  constructor(private formBuilder: NonNullableFormBuilder,
+  constructor(
+    private formBuilder: NonNullableFormBuilder,
     private cursoService: CursosService,
     private snackBar: MatSnackBar,
-    private location: Location) {
+    private location: Location,
+    private ruta: ActivatedRoute) {
 
+  }
+
+  ngOnInit(): void {
+    const curso: Curso = this.ruta.snapshot.data['curso'];  //Obtiene el objeto curso del resolver
+    //console.log(curso);
+
+    this.formCurso.setValue({ //Setamos los datos del curso para que aparezca al editar
+      _id: curso._id,
+      nombre: curso.nombre,
+      categoria: curso.categoria
+     });
   }
 
   onGuardar() {
@@ -40,10 +56,6 @@ export class CursoFormComponent implements OnInit {
 
   private onError() {
     this.snackBar.open('Error al guardar curso', '', { duration: 4000 });  //Mensaje cuando da error
-  }
-
-  ngOnInit(): void {
-
   }
 
 }

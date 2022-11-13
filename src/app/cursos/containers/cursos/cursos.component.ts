@@ -17,30 +17,33 @@ export class CursosComponent implements OnInit {
   dsCursos$: Observable<Curso[]>; //Cuando es Observable, colocar $
 
   constructor(
-      private cursosService: CursosService,
-      public dialog: MatDialog,
-      private ruta: Router,
-      private rutaActual: ActivatedRoute
-    ) {
-    this.dsCursos$ = this.cursosService.todosCursos()
-      .pipe(  //Tratamiento de errores
-        catchError(error => {
-          this.abrirDialogoError('Error al cargar lista de Cursos');
-          return of([]) //Retorna un array vacio para detener el spinner cuando hay error
-        })
-      );
+    private cursosService: CursosService,
+    public dialog: MatDialog,
+    private ruta: Router,
+    private rutaActual: ActivatedRoute) {
+      this.dsCursos$ = this.cursosService.todosCursos()
+        .pipe(catchError(error => {
+                this.abrirDialogoError('Error al cargar lista de Cursos');
+
+                return of([]) //Retorna un array vacio para detener el spinner cuando hay error
+            })
+        );
   }
 
   abrirDialogoError(msgError: string) {
     this.dialog.open(DialogoErrorComponent, { data: msgError });
   }
 
+  ngOnInit(): void {
+
+  }
+
   onNuevo(){
     this.ruta.navigate(['nuevo'], {relativeTo: this.rutaActual}); //Para que navegue a esa direccion
   }
 
-  ngOnInit(): void {
-
+  onEditar(curso: Curso){
+    this.ruta.navigate(['editar', curso._id], {relativeTo: this.rutaActual}); //Navega a esa direccion con los datos del curso
   }
 
 }

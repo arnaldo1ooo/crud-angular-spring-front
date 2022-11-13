@@ -11,6 +11,8 @@ export class CursosListaComponent implements OnInit {
 
   @Input() listCursos: Curso[] = [];
   @Output() nuevo = new EventEmitter(false);
+  @Output() editar = new EventEmitter(false);
+
   readonly columnasAMostrar = ['_id','nombre', 'categoria', 'acciones'];
 
   constructor(
@@ -22,6 +24,10 @@ export class CursosListaComponent implements OnInit {
 
   onNuevo(){
     this.nuevo.emit(true);
+  }
+
+  onEditar(curso: Curso){
+    this.editar.emit(curso);
   }
 
 }
