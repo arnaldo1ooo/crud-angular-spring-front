@@ -23,7 +23,21 @@ export class CursosService {
   }
 
   guardar(curso: Partial<Curso>){ //Se usa Partial cuando se espera que no reciba todos los datos de Curso
+    if(curso._id){
+      console.log('Curso modificado!');
+      return this.actualizar(curso);
+    }
+
+    console.log('Curso creado!');
+    return this.crear(curso);
+  }
+
+  private crear(curso: Partial<Curso>){
     return this.htppClient.post<Curso>(this.API, curso).pipe(first());
+  }
+
+  private actualizar(curso: Partial<Curso>){
+    return this.htppClient.put<Curso>(`${this.API}/${curso._id}`, curso).pipe(first());
   }
 
   cargarPorId(id: string){
