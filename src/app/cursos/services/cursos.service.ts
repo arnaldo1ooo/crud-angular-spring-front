@@ -24,11 +24,11 @@ export class CursosService {
 
   guardar(curso: Partial<Curso>){ //Se usa Partial cuando se espera que no reciba todos los datos de Curso
     if(curso._id){
-      console.log('Curso modificado!');
+      //console.log('Curso modificado!');
       return this.actualizar(curso);
     }
 
-    console.log('Curso creado!');
+    //console.log('Curso creado!');
     return this.crear(curso);
   }
 
