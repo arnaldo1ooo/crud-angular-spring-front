@@ -7,10 +7,11 @@
 
     <!--Pasamos los cursos a la lista-->
     <app-cursos-lista
-    *ngIf="dsCursos$ | async as cursos; else cargando"
-    [listCursos]="cursos"
-    (nuevo)="onNuevo()"
-    (editar)="onEditar($event)">
+      *ngIf="dsCursos$ | async as cursos; else cargando"
+      [listCursos]="cursos"
+      (nuevo)="onNuevo()"
+      (editar)="onEditar($event)"
+      (eliminar)="onEliminar($event)">
     </app-cursos-lista>
 
     <ng-template #cargando>

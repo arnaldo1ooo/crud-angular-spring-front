@@ -40,6 +40,10 @@ export class CursosService {
     return this.htppClient.put<Curso>(`${this.API}/${curso._id}`, curso).pipe(first());
   }
 
+  eliminar(id: string) {
+    return this.htppClient.delete(`${this.API}/${id}`).pipe(first());
+  }
+
   cargarPorId(id: string){
     return this.htppClient.get<Curso>(`${this.API}/${id}`);
   }

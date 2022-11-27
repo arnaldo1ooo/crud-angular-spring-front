@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { Curso } from '../../model/curso';
 
 @Component({
@@ -12,6 +13,7 @@ export class CursosListaComponent implements OnInit {
   @Input() listCursos: Curso[] = [];
   @Output() nuevo = new EventEmitter(false);
   @Output() editar = new EventEmitter(false);
+  @Output() eliminar = new EventEmitter(false);
 
   readonly columnasAMostrar = ['_id','nombre', 'categoria', 'acciones'];
 
@@ -30,4 +32,7 @@ export class CursosListaComponent implements OnInit {
     this.editar.emit(curso);
   }
 
+  onEliminar(curso: Curso) {
+    this.eliminar.emit(curso);
+  }
 }
