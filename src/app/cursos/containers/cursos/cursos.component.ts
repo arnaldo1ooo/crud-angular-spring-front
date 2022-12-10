@@ -90,7 +90,28 @@ export class CursosComponent implements OnInit {
     });
   }
 
+  onInactivar(curso: Curso) {
+    const dialogoRef = this.dialog.open(DialogoConfirmacionComponent, {
+      data: '¿Seguro que desea inactivar este curso?',
+    });
 
+    dialogoRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.cursosService.inactivar(curso).subscribe(
+          () => {
+            this.refrescar();
+            this.alertaSnackBar.open('Curso inactivado con exito!', 'X', {
+              duration: 5000,
+              verticalPosition: 'top',
+              horizontalPosition: 'center'
+            });
+          },
+          () => this.onError('Error al intentar inactivar curso.')
+        );
+      }
+    });
+
+  }
 
 
 }

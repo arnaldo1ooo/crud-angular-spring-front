@@ -14,6 +14,7 @@ export class CursosListaComponent implements OnInit {
   @Output() nuevo = new EventEmitter(false);
   @Output() editar = new EventEmitter(false);
   @Output() eliminar = new EventEmitter(false);
+  @Output() inactivar = new EventEmitter(false);
 
   readonly columnasAMostrar = ['_id','nombre', 'categoria', 'acciones'];
 
@@ -34,5 +35,9 @@ export class CursosListaComponent implements OnInit {
 
   onEliminar(curso: Curso) {
     this.eliminar.emit(curso);
+  }
+
+  onInactivar(curso: Curso) {
+    this.inactivar.emit(curso);
   }
 }

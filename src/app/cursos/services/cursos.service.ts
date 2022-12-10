@@ -22,6 +22,10 @@ export class CursosService {
     );
   }
 
+  cargarPorId(id: string){
+    return this.htppClient.get<Curso>(`${this.API}/${id}`);
+  }
+
   guardar(curso: Partial<Curso>){ //Se usa Partial cuando se espera que no reciba todos los datos de Curso
     if(curso._id){
       //console.log('Curso modificado!');
@@ -44,7 +48,7 @@ export class CursosService {
     return this.htppClient.delete(`${this.API}/${id}`).pipe(first());
   }
 
-  cargarPorId(id: string){
-    return this.htppClient.get<Curso>(`${this.API}/${id}`);
+  inactivar(curso: Partial<Curso>) {
+    return this.htppClient.put<Curso>(`${this.API}/inactivar/${curso._id}`, curso).pipe(first());
   }
 }
